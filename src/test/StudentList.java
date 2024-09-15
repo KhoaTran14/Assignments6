@@ -23,9 +23,9 @@ public class StudentList {
     public void addStudent() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap so luong sinh vien can them: ");
-        int numOfStudents = Integer.parseInt(sc.nextLine());
-
-        for (int i = 0; i < numOfStudents; i++) {
+        int num = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < num; i++) {
             System.out.println("Nhap Thong Tin Sinh Vien " + (i + 1) + ":");
             Student student = new Student();
             student.addStudent();
@@ -36,11 +36,11 @@ public class StudentList {
     public void updateStudentById() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ID sinh vien can cap nhat: ");
-        String idToUpdate = sc.nextLine();
+        String id = sc.nextLine();
         boolean found = false;
 
         for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).getId().equals(idToUpdate)) {
+            if (students.get(i).getId().equals(id)) {
                 System.out.println("Cap nhat thong tin sinh vien:");
                 Student updatedStudent = new Student();
 
@@ -72,14 +72,14 @@ public class StudentList {
         }
 
         if (!found) {
-            System.out.println("Khong tim thay sinh vien voi ID: " + idToUpdate);
+            System.out.println("Khong tim thay sinh vien voi ID: " + id);
         }
     }
 
     public void deleteStudentById() {
         Scanner sc = new Scanner(System.in);
-        String id = sc.nextLine();
         System.out.print("Nhap ID sinh vien can xoa: ");
+        String id = sc.nextLine();
         boolean found = false;
 
         for (int i = 0; i < students.size(); i++) {
@@ -97,7 +97,8 @@ public class StudentList {
     }
 
     public void displayAllStudents() {
-        for (Student student : students) {
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
             student.displayInfo();
             System.out.println();
         }
@@ -106,12 +107,11 @@ public class StudentList {
     public void findTopStudent() {
         Student topStudent = students.get(0);
         for (int i = 0; i < students.size(); i++) {
-            Student student = new Student();
+            Student student = students.get(i);
             if (student.getGPA() > topStudent.getGPA()) {
                 topStudent = student;
             }
         }
-
         System.out.println("Sinh vien co GPA cao nhat la:");
         topStudent.displayInfo();
     }

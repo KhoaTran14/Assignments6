@@ -37,8 +37,6 @@ public class StudentList {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ID sinh vien can cap nhat: ");
         String id = sc.nextLine();
-        boolean found = false;
-
         for (int i = 0; i < students.size(); i++) {
             if (students.get(i).getId().equals(id)) {
                 System.out.println("Cap nhat thong tin sinh vien:");
@@ -56,7 +54,7 @@ public class StudentList {
                 System.out.print("Nhap GPA moi: ");
                 updatedStudent.setGPA(Float.parseFloat(sc.nextLine()));
 
-                System.out.print("Nhap Ngay Sinh moi (dd/MM/yyyy): ");
+                System.out.print("Nhap Ngay Sinh moi: ");
                 String dobStr = sc.nextLine();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 try {
@@ -66,13 +64,7 @@ public class StudentList {
                 }
 
                 students.set(i, updatedStudent);
-                found = true;
-                break;
             }
-        }
-
-        if (!found) {
-            System.out.println("Khong tim thay sinh vien voi ID: " + id);
         }
     }
 
@@ -80,19 +72,11 @@ public class StudentList {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ID sinh vien can xoa: ");
         String id = sc.nextLine();
-        boolean found = false;
-
         for (int i = 0; i < students.size(); i++) {
             if (students.get(i).getId().equals(id)) {
                 students.remove(i);
                 System.out.println("Sinh vien voi ID: " + id + " da bi xoa.");
-                found = true;
-                break;
             }
-        }
-
-        if (!found) {
-            System.out.println("Khong tim thay sinh vien voi ID: " + id);
         }
     }
 

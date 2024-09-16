@@ -18,7 +18,8 @@ public class Processor {
             System.out.println("5. Tim sinh vien co GPA cao nhat");
             System.out.println("6. Thoat");
             System.out.print("Nhap lua chon cua ban: ");
-            choice = Integer.parseInt(sc.nextLine());
+            choice = sc.nextInt();
+            sc.nextLine();
 
             switch (choice) {
                 case 1:

@@ -40,10 +40,7 @@ public class StudentList {
         for (int i = 0; i < students.size(); i++) {
             if (students.get(i).getId().equals(id)) {
                 System.out.println("Cap nhat thong tin sinh vien:");
-                Student updatedStudent = new Student();
-
-                System.out.print("Nhap ID moi: ");
-                updatedStudent.setId(sc.nextLine());
+                Student updatedStudent = students.get(i);
 
                 System.out.print("Nhap Ten moi: ");
                 updatedStudent.setName(sc.nextLine());

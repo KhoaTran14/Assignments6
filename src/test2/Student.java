@@ -1,4 +1,5 @@
-package test;
+
+package test2;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,19 +9,25 @@ public class Student extends Person {
 
     private float GPA;
     private String major;
+    private double tuition = 10000000;
+    private boolean schoolarship;
 
     public Student() {
     }
-
-    public Student(float GPA, String major) {
+    
+    public Student(float GPA, String major, double tuition, Boolean schoolarship) {
         this.GPA = GPA;
         this.major = major;
+        this.tuition = tuition;
+        this.schoolarship = schoolarship;
     }
 
-    public Student(float GPA, String major, String id, String name, Date dateOfBirth) {
+    public Student(float GPA, String major, double tuition, Boolean schoolarship, String id, String name, Date dateOfBirth) {
         super(id, name, dateOfBirth);
         this.GPA = GPA;
         this.major = major;
+        this.tuition = tuition;
+        this.schoolarship = GPA >= 9;
     }
 
     public float getGPA() {
@@ -29,6 +36,7 @@ public class Student extends Person {
 
     public void setGPA(float GPA) {
         this.GPA = GPA;
+        this.schoolarship = GPA >= 9;
     }
 
     public String getMajor() {
@@ -37,6 +45,14 @@ public class Student extends Person {
 
     public void setMajor(String major) {
         this.major = major;
+    }
+
+    public double getTuition() {
+        return schoolarship ? tuition * 0.5 : tuition;
+    }
+
+    public Boolean getSchoolarship() {
+        return schoolarship;
     }
 
     public String getId() {
@@ -65,19 +81,19 @@ public class Student extends Person {
 
     public void addStudent() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Nhap ID: ");
+        System.out.print("ID: ");
         String id = sc.nextLine();
         setId(id);
-        System.out.print("Nhap Ten: ");
+        System.out.print("Name: ");
         String name = sc.nextLine();
         setName(name);
-        System.out.print("Nhap Nganh: ");
+        System.out.print("Major: ");
         String major = sc.nextLine();
         setMajor(major);
-        System.out.print("Nhap GPA: ");
+        System.out.print("GPA: ");
         float GPA = Float.parseFloat(sc.nextLine());
         setGPA(GPA);
-        System.out.print("Nhap Ngay Sinh: ");
+        System.out.print("Date Of Birth: ");
         String dateOfBirthString = sc.nextLine();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
@@ -91,12 +107,14 @@ public class Student extends Person {
     @Override
     public void displayInfo() {
         System.out.println("");
-        System.out.println("Thong Tin Cua Sinh Vien: ");
-        System.out.println("ID: " + this.getId());
-        System.out.println("Ten: " + this.getName());
-        System.out.println("GPA: " + this.getGPA());
-        System.out.println("Nganh: " + this.getMajor());
+        System.out.println("");
+        System.out.println("ID: " + getId());
+        System.out.println("Name: " + getName());
+        System.out.println("Major: " + getMajor());
+        System.out.println("GPA: " + getGPA());
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        System.out.println("Ngay Sinh: " + sdf.format(dateOfBirth));
+        System.out.println("Date Of Birth: " + sdf.format(dateOfBirth));
+        System.out.println("Tuition: " + getTuition());
+        System.out.println("Schoolarship: " + getSchoolarship());
     }
 }

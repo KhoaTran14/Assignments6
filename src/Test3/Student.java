@@ -1,4 +1,4 @@
-package test;
+package test3;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -86,6 +86,37 @@ public class Student extends Person {
         } catch (Exception e) {
             System.out.println("Wrong Format!");
         }
+    }
+
+    public void updateStudent(String id) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Cap nhat thong tin sinh vien:");
+
+        System.out.println("ID: " + id);
+        displayInfo();
+
+        System.out.print("Nhap Ten moi: ");
+        String newName = sc.nextLine();
+        setName(newName);
+
+        System.out.print("Nhap Nganh moi: ");
+        String newMajor = sc.nextLine();
+        setMajor(newMajor);
+
+        System.out.print("Nhap GPA moi: ");
+        String newGPA = sc.nextLine();
+        setGPA(Float.parseFloat(newGPA));
+
+        System.out.print("Nhap Ngay Sinh moi: ");
+        String newDOB = sc.nextLine();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            setDateOfBirth(sdf.parse(newDOB));
+        } catch (Exception e) {
+            System.out.println("Wrong Format!");
+        }
+        System.out.println("Cap nhat thong tin thanh cong!");
     }
 
     @Override

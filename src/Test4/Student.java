@@ -1,26 +1,24 @@
-package test3;
+package Test4;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
+import java.util.Date;
 
 public class Student extends Person {
 
     private float GPA;
     private String major;
 
+    public Student(String id, String fullName, Date dateOfBirth, float GPA, String major) {
+        super(id, fullName, dateOfBirth);
+        this.GPA = GPA;
+        this.major = major;
+    }
+
     public Student() {
-    }
-
-    public Student(float GPA, String major) {
-        this.GPA = GPA;
-        this.major = major;
-    }
-
-    public Student(float GPA, String major, String id, String name, Date dateOfBirth) {
-        super(id, name, dateOfBirth);
-        this.GPA = GPA;
-        this.major = major;
+        super("", "", null);
+        this.GPA = 0;
+        this.major = "";
     }
 
     public float getGPA() {
@@ -63,20 +61,18 @@ public class Student extends Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public void addStudent() {
+    @Override
+    public void addPerson() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ID: ");
-        String id = sc.nextLine();
-        setId(id);
-        System.out.print("Nhap Ten: ");
-        String name = sc.nextLine();
-        setName(name);
-        System.out.print("Nhap Nganh: ");
-        String major = sc.nextLine();
-        setMajor(major);
+        setId(sc.nextLine());
+        System.out.print("Nhap ten: ");
+        setName(sc.nextLine());
+        System.out.print("Nhap nganh: ");
+        setMajor(sc.nextLine());
         System.out.print("Nhap GPA: ");
-        float GPA = Float.parseFloat(sc.nextLine());
-        setGPA(GPA);
+        setGPA(sc.nextFloat());
+        sc.nextLine();
         System.out.print("Nhap Ngay Sinh: ");
         String dateOfBirthString = sc.nextLine();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -88,12 +84,14 @@ public class Student extends Person {
         }
     }
 
-    public void updateStudent(String id) {
+    @Override
+    public void updatePerson(String id) {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Cap nhat thong tin sinh vien:");
 
-        System.out.println("ID: " + getId());
+        System.out.println("ID: " + id);
+        displayInfo();
 
         System.out.print("Nhap Ten moi: ");
         String newName = sc.nextLine();

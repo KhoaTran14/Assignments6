@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class StudentList {
-    ArrayList<Student> students = new ArrayList<>();
+    private ArrayList<Student> students = new ArrayList<>();
 
     public StudentList() {
         this.students = new ArrayList<>();

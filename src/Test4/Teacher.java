@@ -1,8 +1,8 @@
-package test3;
+package Test4;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
+import java.util.Date;
 
 public class Teacher extends Person {
 
@@ -10,15 +10,13 @@ public class Teacher extends Person {
     private String teachingSubject;
 
     public Teacher() {
+        super("", "", null);
+        this.department = "";
+        this.teachingSubject = "";
     }
 
-    public Teacher(String department, String teachingSubject) {
-        this.department = department;
-        this.teachingSubject = teachingSubject;
-    }
-
-    public Teacher(String department, String teachingSubject, String id, String name, Date dateOfBirth) {
-        super(id, name, dateOfBirth);
+    public Teacher(String id, String fullName, Date dateOfBirth, String department, String teachingSubject) {
+        super(id, fullName, dateOfBirth);
         this.department = department;
         this.teachingSubject = teachingSubject;
     }
@@ -63,20 +61,17 @@ public class Teacher extends Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public void addTeacher() {
+    @Override
+    public void addPerson() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ID: ");
-        String id = sc.nextLine();
-        setId(id);
-        System.out.print("Nhap Ten: ");
-        String name = sc.nextLine();
-        setName(name);
-        System.out.print("Nhap Phong Ban: ");
-        String department = sc.nextLine();
-        setDepartment(department);
-        System.out.print("Nhap Mon Day: ");
-        String teachingSubject = sc.nextLine();
-        setTeachingSubject(teachingSubject);
+        setId(sc.nextLine());
+        System.out.print("Nhap ten: ");
+        setName(sc.nextLine());
+        System.out.print("Nhap bo mon: ");
+        setDepartment(sc.nextLine());
+        System.out.print("Nhap mon day: ");
+        setTeachingSubject(sc.nextLine());
         System.out.print("Nhap Ngay Sinh: ");
         String dateOfBirthString = sc.nextLine();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -88,12 +83,14 @@ public class Teacher extends Person {
         }
     }
 
-    public void updateTeacher(String id) {
+    @Override
+    public void updatePerson(String id) {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Cap nhat thong tin giang vien:");
 
-        System.out.println("ID: " + getId());
+        System.out.println("ID: " + id);
+        displayInfo();
 
         System.out.print("Nhap Ten moi: ");
         String newName = sc.nextLine();
@@ -107,7 +104,7 @@ public class Teacher extends Person {
         String newTeachingSubject = sc.nextLine();
         setTeachingSubject(teachingSubject);
 
-        System.out.print("Nhap ngay sinh moi: ");
+        System.out.print("Nhap ngay sinh moi (dd/MM/yyyy): ");
         String dob = sc.nextLine();
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {

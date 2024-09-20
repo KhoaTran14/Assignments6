@@ -1,4 +1,4 @@
-package test3;
+package Test4;
 
 import java.util.Scanner;
 
@@ -42,6 +42,7 @@ public class Processor {
                     personList.deletePersonById(deleteId);
                     break;
                 case 5:
+                    System.out.print("Nhap ID cua nguoi can tim: ");
                     String findId = sc.nextLine();
                     Person foundPerson = personList.findPersonById(findId);
                     foundPerson.displayInfo();

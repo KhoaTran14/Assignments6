@@ -1,4 +1,4 @@
-package test3;
+package Test4;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class PersonList {
         for (int i = 0; i < num; i++) {
             System.out.println("Nhap Thong Tin Sinh Vien " + (i + 1) + ":");
             Student student = new Student();
-            student.addStudent();
+            student.addPerson();
             p.add(student);
         }
     }
@@ -40,7 +40,7 @@ public class PersonList {
         for (int i = 0; i < num; i++) {
             System.out.println("Nhap Thong Tin Giang Vien " + (i + 1) + ":");
             Teacher teacher = new Teacher();
-            teacher.addTeacher();
+            teacher.addPerson();
             p.add(teacher);
         }
     }
@@ -50,11 +50,12 @@ public class PersonList {
         Person person = findPersonById(id);
         if (person instanceof Student) {
             Student student = (Student) person;
-            student.updateStudent(id);
+            student.updatePerson(id);
         } else if (person instanceof Teacher) {
             Teacher teacher = (Teacher) person;
-            teacher.updateTeacher(id);
+            teacher.updatePerson(id);
         }
+
     }
 
     public void displayEveryone() {
@@ -75,6 +76,7 @@ public class PersonList {
 
     public void deletePersonById(String id) {
         Scanner sc = new Scanner(System.in);
+        System.out.print("Nhap ID nguoi can xoa: ");
         id = sc.nextLine();
         for (int i = 0; i < p.size(); i++) {
             if (p.get(i).getId().equals(id)) {
